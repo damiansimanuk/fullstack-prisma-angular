@@ -1,0 +1,16 @@
+:host ::ng-deep .p-toolbar {
+  border: 0px;
+  padding: 0.2rem;
+  /* border-bottom: solid rgb(112, 148, 112) !important; */
+  height: 70px;
+  padding: 0.2rem 1rem;
+}
+
+:host ::ng-deep button.p-speeddial-button span.p-button-icon {
+  font-size: 24px;
+}
+
+:host ::ng-deep button.p-speeddial-button.toolbar-button.p-button-icon-only {
+  width: 3rem;
+  height: 3rem;
+}

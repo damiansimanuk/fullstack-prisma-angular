@@ -1,0 +1,5 @@
+ 
+:host ::ng-deep .active {
+ font-weight: bold; 
+ color: #344f70;
+}

@@ -318,7 +318,7 @@ export function RegisterRoutes(app: express.Router) {
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         app.get('/api/v1/users/roles/:id',
-            authenticateMiddleware([{"jwt":["roles:read"]}]),
+            authenticateMiddleware([{"jwt":["userAdmin","roles:read"]}]),
 
             function RoleController_getRoleDetail(request: any, response: any, next: any) {
             const args = {
@@ -342,7 +342,7 @@ export function RegisterRoutes(app: express.Router) {
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         app.put('/api/v1/users/roles/:id',
-            authenticateMiddleware([{"jwt":["roles:update"]}]),
+            authenticateMiddleware([{"jwt":["userAdmin","roles:update"]}]),
 
             function RoleController_updateRole(request: any, response: any, next: any) {
             const args = {
@@ -367,6 +367,7 @@ export function RegisterRoutes(app: express.Router) {
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         app.get('/api/v1/users/roles',
+            authenticateMiddleware([{"jwt":["userAdmin","roles:read"]}]),
 
             function RoleController_getRoleList(request: any, response: any, next: any) {
             const args = {
@@ -392,7 +393,7 @@ export function RegisterRoutes(app: express.Router) {
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         app.post('/api/v1/users/roles',
-            authenticateMiddleware([{"jwt":["roles:create"]}]),
+            authenticateMiddleware([{"jwt":["userAdmin","roles:create"]}]),
 
             function RoleController_createRole(request: any, response: any, next: any) {
             const args = {
@@ -416,7 +417,7 @@ export function RegisterRoutes(app: express.Router) {
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         app.delete('/api/v1/users/roles/:id',
-            authenticateMiddleware([{"jwt":["roles:delete"]}]),
+            authenticateMiddleware([{"jwt":["userAdmin","roles:delete"]}]),
 
             function RoleController_deleteRole(request: any, response: any, next: any) {
             const args = {

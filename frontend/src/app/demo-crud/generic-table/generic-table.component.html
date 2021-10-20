@@ -1,0 +1,112 @@
+<div>
+    <!-- <p-toolbar>
+        <ng-template pTemplate="left">
+            <h1>{{Title || 'Tabla Generica'}}</h1>
+        </ng-template>
+
+        <ng-template pTemplate="right">  
+            <ng-container *ngFor="let action of HeaderActions">
+                <ng-container *ngIf="!!action.icon; then iconButton; else textButton"></ng-container>
+                <ng-template #textButton>
+                    <button pButton pRipple *ngIf="!action.hidden" 
+                        [label]="action.text" 
+                        [pTooltip]="action.tooltip"
+                        [disabled]="action.disabled" 
+                        [ngClass]="getActionClass(action)" 
+                        (click)="action.handler()">
+                    </button>
+                </ng-template>
+                <ng-template #iconButton>
+                    <button pButton pRipple *ngIf="!action.hidden" 
+                        [pTooltip]="action.tooltip || action.text"
+                        [icon]="action.icon" 
+                        [disabled]="action.disabled" 
+                        [ngClass]="getActionClass(action)"
+                        (click)="action.handler()">
+                    </button>
+                </ng-template>
+            </ng-container>
+        </ng-template>
+    </p-toolbar> -->
+
+      
+    <table>
+        <caption>{{title}}</caption>
+        <thead>  
+            <tr>
+                <ng-container *ngFor="let col of columns">
+                    <th [style]="getColumnStyle(col)" [ngClass]="col.headerClass ?? ''">
+                        {{col.header}}
+                    </th>
+                </ng-container>
+            </tr> 
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let row of data">
+                <tr>
+                    <ng-container *ngFor="let col of columns">
+                        <td [style]="getColumnStyle(col)" [ngClass]="col.class ?? ''">
+                         
+                            <ng-template *ngIf="col.field==='actions' then actionsTemplate else fieldTemplate"></ng-template>
+                            
+                            <ng-template #actionsTemplate>
+                                <div style="display: flex; align-items: flex-end;">
+                                    <ng-container *ngFor="let action of col.actions">
+                                        <ng-container *ngIf="!!action.icon; then iconButton; else textButton"></ng-container>
+                                        <ng-template #textButton> 
+                                            <button *ngIf="!isHidden(action,row)" 
+                                                [disabled]="isDisabled(action, row)" 
+                                                [ngClass]="getActionClass(action)"
+                                                (click)="action.handler(row)">
+                                                {{action.text}}
+                                            </button> 
+                                        </ng-template>
+                                        <ng-template #iconButton>
+                                            <button *ngIf="!isHidden(action,row)" 
+                                                [disabled]="isDisabled(action, row)" 
+                                                [ngClass]="getActionClass(action)"
+                                                (click)="action.handler(row)">
+                                                {{action.text}}
+                                            </button>
+                                        </ng-template>
+                                    </ng-container>
+                                </div>
+                            </ng-template>
+                            
+                            <ng-template #fieldTemplate>
+                            
+                                <ng-template *ngIf="!!col.format then switchFormat else notFormat"></ng-template>
+                            
+                                <ng-template #switchFormat>
+                                    <ng-container [ngSwitch]="col.format">
+                                        <ng-container *ngSwitchCase="'date'">
+                                            {{getValue(row, col) | date:'dd/MM/YY'}}
+                                        </ng-container>
+                            
+                                        <ng-container *ngSwitchCase="'datetime'">
+                                            {{getValue(row, col) | date:'dd/MM/YY HH:mm'}}
+                                        </ng-container>
+                            
+                                        <ng-container *ngSwitchCase="'boolean'">
+                                            {{getValue(row, col) ? 'Sí' : 'No'}}
+                                        </ng-container>
+                            
+                                        <ng-container *ngSwitchDefault>
+                                            <span [innerHTML]="format(row, col)"></span>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-template>
+                            
+                                <ng-template #notFormat>
+                                    {{getValue(row, col)}}
+                                </ng-template>
+                            
+                            </ng-template>
+
+                        </td>
+                    </ng-container>
+                </tr>
+            </ng-container> 
+        </tbody>    
+    </table>  
+</div>
