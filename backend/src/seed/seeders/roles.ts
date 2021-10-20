@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client'
-import { permissions } from './permissions'
 
 const roles = [
   {
@@ -11,20 +10,12 @@ const roles = [
   {
     code: 'viewer',
     description: 'Visualizacion',
-    permissions: permissions
-      .filter((p) => p.code.endsWith(':read'))
-      .map((p) => {
-        return { code: p.code }
-      })
+    permissions: ['users:read', 'roles:read', 'permissions:read']
   },
   {
     code: 'userAdmin',
     description: 'Administrador de Usuario y grupos',
-    permissions: permissions
-      .filter((p) => p.code.startsWith('users:') || p.code.startsWith('roles:'))
-      .map((p) => {
-        return { code: p.code }
-      })
+    permissions: []
   }
 ]
 
@@ -37,7 +28,7 @@ export async function insertRoles(prisma: PrismaClient) {
       r.permissions.map((p) => {
         return {
           code: r.code,
-          permName: p.code
+          permCode: p
         }
       })
     )
@@ -55,7 +46,7 @@ export async function insertRoles(prisma: PrismaClient) {
           data: {
             permissions: {
               connect: {
-                code: r.permName
+                code: r.permCode
               }
             }
           }
