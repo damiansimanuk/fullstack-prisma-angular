@@ -1,0 +1,25 @@
+{
+  "entryFile": "src/index.ts",
+  "controllerPathGlobs": ["src/app/**/*.controller.ts"],
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "spec": {
+    "outputDirectory": "src/generated",
+    "specVersion": 3, 
+    "securityDefinitions": {
+        "basic": {
+          "type": "basic",
+           "name": "Basic Authentication"
+        }, 
+        "jwt": {
+          "type": "http", 
+          "scheme":"bearer",
+          "name": "Bearer Authentication"
+        }
+    }
+  },
+  "routes": {
+    "authenticationModule": "./src/app/auth/authentication.ts",
+    "routesDir": "src/generated"
+  },
+  "ignore": ["**/node_modules/**"]
+}

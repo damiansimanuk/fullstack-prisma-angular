@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "sourceMap": false,
+    "module": "commonjs",
+    "outDir": "build",
+    "strict": true,
+    "moduleResolution":"Node", 
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,    
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "paths": {
+      "test/*": ["test/*"]
+    }, 
+    "noImplicitAny": false,
+    "strictPropertyInitialization": false,  
+    "rootDir": "src",
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+
+  },
+  "include": [ 
+    "src/**/*.ts"
+  ],
+  "exclude" : [
+    "src/**/*.test.ts",
+    "src/e2e/**/*.ts",
+  ]
+}

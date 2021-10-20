@@ -1,0 +1,1551 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"Permission": {
+				"properties": {
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"description": {
+						"type": "string",
+						"nullable": true
+					},
+					"code": {
+						"type": "string"
+					},
+					"permissionId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"createdAt",
+					"updatedAt",
+					"isActive",
+					"description",
+					"code",
+					"permissionId"
+				],
+				"type": "object",
+				"description": "Model Permission"
+			},
+			"UpdatePermissionDto": {
+				"properties": {
+					"isActive": {
+						"type": "boolean"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"type": "object"
+			},
+			"CreatePermissionDto": {
+				"properties": {
+					"description": {
+						"type": "string"
+					},
+					"code": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"description",
+					"code"
+				],
+				"type": "object"
+			},
+			"Role": {
+				"properties": {
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"description": {
+						"type": "string"
+					},
+					"code": {
+						"type": "string"
+					},
+					"roleId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"createdAt",
+					"updatedAt",
+					"isActive",
+					"description",
+					"code",
+					"roleId"
+				],
+				"type": "object",
+				"description": "Model Role"
+			},
+			"UpdateRoleDto": {
+				"properties": {
+					"permissions": {
+						"items": {
+							"properties": {
+								"code": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"code"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"type": "object"
+			},
+			"CreateRoleDto": {
+				"properties": {
+					"permissions": {
+						"items": {
+							"properties": {
+								"code": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"code"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"description": {
+						"type": "string"
+					},
+					"code": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"description",
+					"code"
+				],
+				"type": "object"
+			},
+			"User": {
+				"properties": {
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"passwordHash": {
+						"type": "string",
+						"nullable": true
+					},
+					"email": {
+						"type": "string",
+						"nullable": true
+					},
+					"fullName": {
+						"type": "string"
+					},
+					"username": {
+						"type": "string"
+					},
+					"userId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"createdAt",
+					"updatedAt",
+					"isActive",
+					"passwordHash",
+					"email",
+					"fullName",
+					"username",
+					"userId"
+				],
+				"type": "object",
+				"description": "Model User"
+			},
+			"UpdateUserDto": {
+				"properties": {
+					"roles": {
+						"items": {
+							"properties": {
+								"code": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"code"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"fullName": {
+						"type": "string"
+					}
+				},
+				"type": "object"
+			},
+			"CreateUserDto": {
+				"properties": {
+					"roles": {
+						"items": {
+							"properties": {
+								"code": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"code"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"fullName": {
+						"type": "string"
+					},
+					"username": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"fullName",
+					"username"
+				],
+				"type": "object"
+			}
+		},
+		"securitySchemes": {
+			"basic": {
+				"scheme": "basic",
+				"type": "http"
+			},
+			"jwt": {
+				"type": "http",
+				"scheme": "bearer",
+				"name": "Bearer Authentication"
+			}
+		}
+	},
+	"info": {
+		"title": "fullstack-prisma-angular",
+		"version": "1.0.0",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/api/v1/auth/me": {
+			"get": {
+				"operationId": "GetUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"createdAt": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"updatedAt": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"isActive": {
+											"type": "boolean"
+										},
+										"passwordHash": {
+											"type": "string"
+										},
+										"email": {
+											"type": "string"
+										},
+										"fullName": {
+											"type": "string"
+										},
+										"username": {
+											"type": "string"
+										},
+										"userId": {
+											"type": "number",
+											"format": "double"
+										},
+										"roles": {
+											"items": {
+												"properties": {
+													"description": {
+														"type": "string"
+													},
+													"code": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"description",
+													"code"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"permissions": {
+											"items": {
+												"properties": {
+													"description": {
+														"type": "string"
+													},
+													"code": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"description",
+													"code"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"createdAt",
+										"updatedAt",
+										"isActive",
+										"passwordHash",
+										"email",
+										"fullName",
+										"username",
+										"userId",
+										"roles",
+										"permissions"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Auth"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/v1/auth/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"refreshToken": {
+											"type": "string"
+										},
+										"accessToken": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"refreshToken",
+										"accessToken"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"password": {
+										"type": "string"
+									},
+									"username": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"password",
+									"username"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/auth/change_password": {
+			"post": {
+				"operationId": "ChangePassword",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "number",
+									"format": "double"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Auth"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"newpassword": {
+										"type": "string"
+									},
+									"oldpassword": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"newpassword",
+									"oldpassword"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/auth/refresh_token": {
+			"post": {
+				"operationId": "PostRefreshToken",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"accessToken": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"accessToken"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"refreshToken": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"refreshToken"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/auth/logout": {
+			"get": {
+				"operationId": "Logout",
+				"responses": {
+					"200": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Success Logout and Unauthorized"
+					}
+				},
+				"tags": [
+					"Auth"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "refreshToken",
+						"required": false,
+						"schema": {
+							"default": "None",
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/v1/users/permissions/{id}": {
+			"get": {
+				"operationId": "GetPermissionDetail",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Permission"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"jwt": [
+							"permissions:read"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "UpdatePermission",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Permission"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"jwt": [
+							"permissions:update"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdatePermissionDto"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeletePermission",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Permission"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"jwt": [
+							"permissions:delete"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/v1/users/permissions": {
+			"get": {
+				"operationId": "GetPermissionList",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"total": {
+											"type": "number",
+											"format": "double"
+										},
+										"perPage": {
+											"type": "number",
+											"format": "double"
+										},
+										"page": {
+											"type": "number",
+											"format": "double"
+										},
+										"rows": {
+											"items": {
+												"$ref": "#/components/schemas/Permission"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"total",
+										"perPage",
+										"page",
+										"rows"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"jwt": [
+							"permissions:read"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"schema": {
+							"default": 1,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "perPage",
+						"required": false,
+						"schema": {
+							"default": 100,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "username",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "isActive",
+						"required": false,
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreatePermission",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Permission"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"jwt": [
+							"permissions:create"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreatePermissionDto"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/users/roles/{id}": {
+			"get": {
+				"operationId": "GetRoleDetail",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/Role"
+										},
+										{
+											"properties": {
+												"permissions": {
+													"items": {
+														"properties": {
+															"description": {
+																"type": "string"
+															},
+															"code": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"description",
+															"code"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"permissions"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"jwt": [
+							"roles:read"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "UpdateRole",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/Role"
+										},
+										{
+											"properties": {
+												"permissions": {
+													"items": {
+														"properties": {
+															"description": {
+																"type": "string"
+															},
+															"code": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"description",
+															"code"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"permissions"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"jwt": [
+							"roles:update"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateRoleDto"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteRole",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Role"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"jwt": [
+							"roles:delete"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/v1/users/roles": {
+			"get": {
+				"operationId": "GetRoleList",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"total": {
+											"type": "number",
+											"format": "double"
+										},
+										"perPage": {
+											"type": "number",
+											"format": "double"
+										},
+										"page": {
+											"type": "number",
+											"format": "double"
+										},
+										"rows": {
+											"items": {
+												"allOf": [
+													{
+														"$ref": "#/components/schemas/Role"
+													},
+													{
+														"properties": {
+															"permissions": {
+																"items": {
+																	"properties": {
+																		"code": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"code"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															}
+														},
+														"required": [
+															"permissions"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"total",
+										"perPage",
+										"page",
+										"rows"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"schema": {
+							"default": 1,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "perPage",
+						"required": false,
+						"schema": {
+							"default": 100,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "isActive",
+						"required": false,
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreateRole",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/Role"
+										},
+										{
+											"properties": {
+												"permissions": {
+													"items": {
+														"properties": {
+															"code": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"permissions"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"jwt": [
+							"roles:create"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateRoleDto"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/users/{id}": {
+			"get": {
+				"operationId": "GetUserDetail",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"createdAt": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"updatedAt": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"isActive": {
+											"type": "boolean"
+										},
+										"passwordHash": {
+											"type": "string"
+										},
+										"email": {
+											"type": "string"
+										},
+										"fullName": {
+											"type": "string"
+										},
+										"username": {
+											"type": "string"
+										},
+										"userId": {
+											"type": "number",
+											"format": "double"
+										},
+										"roles": {
+											"items": {
+												"properties": {
+													"description": {
+														"type": "string"
+													},
+													"code": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"description",
+													"code"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"permissions": {
+											"items": {
+												"properties": {
+													"description": {
+														"type": "string"
+													},
+													"code": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"description",
+													"code"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"createdAt",
+										"updatedAt",
+										"isActive",
+										"passwordHash",
+										"email",
+										"fullName",
+										"username",
+										"userId",
+										"roles",
+										"permissions"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "UpdateUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"jwt": [
+							"userAdmin",
+							"users:update"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateUserDto"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteUser",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"jwt": [
+							"userAdmin",
+							"users:delete"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/v1/users": {
+			"get": {
+				"operationId": "GetUserList",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"total": {
+											"type": "number",
+											"format": "double"
+										},
+										"perPage": {
+											"type": "number",
+											"format": "double"
+										},
+										"page": {
+											"type": "number",
+											"format": "double"
+										},
+										"rows": {
+											"items": {
+												"properties": {
+													"createdAt": {
+														"type": "string",
+														"format": "date-time"
+													},
+													"updatedAt": {
+														"type": "string",
+														"format": "date-time"
+													},
+													"isActive": {
+														"type": "boolean"
+													},
+													"passwordHash": {
+														"type": "string"
+													},
+													"email": {
+														"type": "string"
+													},
+													"fullName": {
+														"type": "string"
+													},
+													"username": {
+														"type": "string"
+													},
+													"userId": {
+														"type": "number",
+														"format": "double"
+													},
+													"roles": {
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"createdAt",
+													"updatedAt",
+													"isActive",
+													"passwordHash",
+													"email",
+													"fullName",
+													"username",
+													"userId",
+													"roles"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"total",
+										"perPage",
+										"page",
+										"rows"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"jwt": [
+							"userAdmin",
+							"users:read"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"schema": {
+							"default": 1,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "perPage",
+						"required": false,
+						"schema": {
+							"default": 100,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "isActive",
+						"required": false,
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreateUser",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								}
+							}
+						}
+					}
+				},
+				"description": "Hola mundo",
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"jwt": [
+							"userAdmin",
+							"users:create"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateUserDto"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
